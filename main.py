@@ -15,6 +15,9 @@ if api_key is None:
     print("Gemini api key not found")
     raise RuntimeError
 
+'''
+Parse command line arguments for our ai agent main.py file
+'''
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Simple chatbot")
     parser.add_argument("user_prompt", type=str, help="User prompt")
@@ -23,9 +26,15 @@ def parse_arguments():
 
     return args
 
+'''
+function which allows us to chat with our given AI provider
+'''
 def get_chat_response(client: genai.Client, model: str, messages: list[types.Content]):
     return client.models.generate_content(model=model, contents=messages)
 
+'''
+Prints a simple debug message for when --verbose is used
+'''
 def print_debug(user_prompt: str, response_data: GenerateContentResponse):
     print(f'User prompt: {user_prompt}') 
     print(f'Prompt tokens: {response_data.prompt_token_count}')
