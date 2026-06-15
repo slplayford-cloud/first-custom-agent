@@ -7,6 +7,7 @@ import os
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
+from prompts import system_prompt
 
 load_dotenv()
 api_key = os.environ.get("GEMINI_API_KEY")
@@ -30,7 +31,11 @@ def parse_arguments():
 function which allows us to chat with our given AI provider
 '''
 def get_chat_response(client: genai.Client, model: str, messages: list[types.Content]):
-    return client.models.generate_content(model=model, contents=messages)
+    return client.models.generate_content(
+            model=model,
+            contents=messages,
+            config=types.GenerateContentConfigOrDict(system_instruction=system_prompt),
+        )
 
 '''
 Prints a simple debug message for when --verbose is used

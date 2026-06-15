@@ -3,10 +3,9 @@
 import os
 import subprocess
 
+
 def run_python_file(
-    working_directory: str,
-    file_path: str,
-    args: list[str] | None = None
+    working_directory: str, file_path: str, args: list[str] | None = None
 ) -> str:
     try:
         abs_path = os.path.abspath(working_directory)
@@ -38,7 +37,7 @@ def run_python_file(
             output.append(f"STDOUT: {process.stdout}")
             output.append(f"STDERR: {process.stderr}")
 
-        return '\n'.join(output)
+        return "\n".join(output)
 
     except e:
         return f"Error: executing Python file: {e}"

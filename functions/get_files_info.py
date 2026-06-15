@@ -2,6 +2,7 @@
 
 import os
 
+
 def get_files_info(working_directory: str, directory: str = ".") -> str:
     try:
         abs_path = os.path.abspath(working_directory)
@@ -20,8 +21,8 @@ def get_files_info(working_directory: str, directory: str = ".") -> str:
             file_path = os.path.join(target_dir, file)
             f_size = os.path.getsize(file_path)
             is_dir = os.path.isdir(file_path)
-            file_list.append(f'- {file}: file_size={f_size}, is_dir={is_dir}')
+            file_list.append(f"- {file}: file_size={f_size}, is_dir={is_dir}")
 
-        return '\n'.join(file_list) 
+        return "\n".join(file_list)
     except:
-        return 'Error: Runtime error occured for get_files_info'
+        return "Error: Runtime error occured for get_files_info"
