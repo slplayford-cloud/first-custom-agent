@@ -4,6 +4,7 @@
 from collections.abc import Callable
 
 from google.genai import types
+from config import WORKING_DIR
 
 from functions.get_file_content import (get_file_content,
                                         schema_get_file_content)
@@ -54,7 +55,7 @@ def call_function(
 
     # Get function args and set the working directory
     args = dict(function_call.args) if function_call.args else {}
-    args["working_directory"] = "./calculator"
+    args["working_directory"] = WORKING_DIR
 
     result = function_map[function_name](**args)
     from google.genai import types
