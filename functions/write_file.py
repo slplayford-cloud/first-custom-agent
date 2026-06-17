@@ -43,7 +43,7 @@ def write_file(working_directory: str, file_path: str, content: str) -> str:
             return f'Error: Cannot write to "{file_path}" as it is a directory'
 
         # Make any subdirectories needed to get to the filepath
-        os.makedirs(name=file_path, exist_ok=True)
+        os.makedirs(os.path.dirname(abs_path), exist_ok=True)
 
         # Write to the file
         with open(target_file, "w") as f:
